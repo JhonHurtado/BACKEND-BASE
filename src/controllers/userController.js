@@ -51,7 +51,7 @@ export const getUsers = async(req,res)=>{
     try {
         const usersFound = await UserModel.find()
         if(!usersFound){
-            res.status(200).json({message:"Users empty",usersFound});
+            res.status(404).json({message:"Users empty",usersFound});
         }
         res.status(200).json({message:"Users found",usersFound});
 
@@ -82,7 +82,7 @@ export const getUser = async(req,res)=>{
         const {id} = req.params;
         const userFound = await UserModel.findById(id);
         if(!userFound){
-            res.status(200).json({message:"User not found",userFound});
+            res.status(404).json({message:"User not found",userFound});
         }
         res.status(200).json({message:"User found",userFound});
     } catch (error) {
@@ -110,7 +110,7 @@ export const updateUser = async(req,res)=>{
         const data = req.body
         const id = req.params.id
         
-        const updatedUser = await UserModel.updateOne({"_id":id},{$set:{...data}})
+        const updatedUser = await UserModel.findByIdAndUpdate(id,{$set:{...data}})
         res.status(200).json({message:'User updated successfully', updatedUser});
 
     } catch (error) {
@@ -142,3 +142,11 @@ export const deleteUser = async(req,res)=>{
     }
 }
 
+
+/**
+ * mongoose es un ORM o libreria de mongo que permite hacer manejo de una base de datos 
+ * atravez de codigo que alguien mas desarrolo nos permite hacer un manejo mas facil y sencillo
+ * la conexion la hace atravez de una url-- puede ser local o a un cloud (Mongo atlas)
+ * 
+ * 
+ */

@@ -20,7 +20,7 @@ import '../helper/createRole.js';
 
 
 // import route user
-import user from '../routes/userRouter.js'
+import user from '../routes/userRouter.js';
 
 
 
@@ -59,7 +59,7 @@ app.use(express.urlencoded({ extended: true }));
  *          eliminar usuarios
  */
 
-app.use('/api/user', user );
+app.use('/api', user );
 
 
 /**

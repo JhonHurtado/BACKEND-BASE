@@ -4,11 +4,11 @@ import {validateUser} from '../validators/user.js';
 
 const router = Router();
 
-router.get('/', getUsers)
-router.get('/:id',getUser )
-router.post('/',validateUser, createUser)
-router.put('/:id', updateUser)
-router.delete('/:id', deleteUser)
+router.get('/user', getUsers)
+router.get('/user/:id',getUser )
+router.post('/user',validateUser, createUser)
+router.put('/user/:id', updateUser)
+router.delete('/user/:id', deleteUser)
 
 export default router;
 
